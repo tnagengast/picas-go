@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: picas-go-deployment
+  labels:
+    app: picas-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: picas-go
+  template:
+    metadata:
+      labels:
+        app: picas-go
+    spec:
+      containers:
+        - name: picas-go
+          image: registry.replicated.com/picas-go/api:1.0.2-amd64
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081

@@ -1,0 +1,16 @@
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: picas-go-supportbundle
+  labels:
+    app: picas-go
+spec:
+  collectors:
+    - clusterInfo: { }
+    - clusterResources: { }
+    - logs:
+        selector:
+          - app=picas-go
+        limits:
+          maxAge: 30d
+          maxLines: 10000

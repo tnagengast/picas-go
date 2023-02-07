@@ -1,0 +1,15 @@
+apiVersion: kots.io/v1beta1
+kind: Application
+metadata:
+  name: picas-go-kots-app
+  labels:
+    app: picas-go
+spec:
+  title: Picas-Go
+  statusInformers:
+    - deployment/picas-go-deployment
+  ports:
+    - serviceName: picas-go
+      servicePort: 8081 # this is what the app runs on
+      localPort: 31234 # this is where it's served to (the nodePort)
+      applicationUrl: "http://picas-go"

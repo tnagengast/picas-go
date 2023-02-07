@@ -1,26 +1,25 @@
 package main
 
 import (
-    "fmt"
-    "net/http"
-    "github.com/common-nighthawk/go-figure"
+	"fmt"
+	"net/http"
+
+	"github.com/common-nighthawk/go-figure"
 )
 
 func main() {
-    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        if r.URL.Path != "/" {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			myFigure := figure.NewFigure(r.URL.Path, "", true)
+			fmt.Fprintf(w, myFigure.String())
+			return
+		}
 
-            myFigure := figure.NewFigure(r.URL.Path, "", true)
+		myFigure := figure.NewFigure("Hello! Welcome to Picas-Go :)", "", true)
+		fmt.Fprintf(w, myFigure.String())
+	})
 
-            fmt.Fprintf(w, myFigure.String())
-            return
-        }
-
-        fmt.Fprintf(w, "Hello World")
-    })
-
-    fmt.Println("Starting server at http://localhost:8080")
-
-    http.ListenAndServe(":8080", nil)
+	port := ":8081"
+	fmt.Println("Listening on port", port)
+	http.ListenAndServe(port, nil)
 }
-
