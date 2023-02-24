@@ -1,6 +1,6 @@
 # Picas-Go
 
-An fun lil API that turns text into ASCII art 🎨
+An fun lil API that turns text into ASCII art, like Picasso! 🎨
 
 ## Notes
 
