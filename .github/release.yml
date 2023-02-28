@@ -1,0 +1,12 @@
+
+changelog:
+  exclude:
+    labels:
+      - exclude
+  categories:
+    - title: 👒 Internal
+      labels:
+        - internal
+    - title: 🏕 Features
+      labels:
+        - enhancement
