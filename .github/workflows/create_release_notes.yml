@@ -2,11 +2,11 @@ name: Create Release Notes
 
 on:
   schedule:
-    - cron: "0 0 * * 2 TZ=America/New_York"
+    - cron: '0 5 * * 2' # Midnight EST
   workflow_dispatch:
 
 jobs:
-  create-release-note:
+  create-release-notes:
     permissions:
       contents: write
     name: Create GitHub Release
