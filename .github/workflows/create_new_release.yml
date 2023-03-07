@@ -19,7 +19,8 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
+            const date = new Date();
             await github.request(`POST /repos/${{ github.repository }}/releases`, {
-              tag_name: `v${{ steps.get-date.outputs.year }}.${{ steps.get-date.outputs.week }}-rc`,
+              tag_name: `v${date.getFullYear()}.${date.getWeek()}-rc`,
               generate_release_notes: true
             });
