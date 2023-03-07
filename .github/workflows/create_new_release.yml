@@ -1,17 +1,14 @@
-name: Create Release
+name: Create Release Notes
 
 on:
   schedule:
-    - cron: "0 0 * * TUE"
+    - cron: "0 0 * * 2 TZ=America/New_York"
   workflow_dispatch:
 
-concurrency:
-  group: lint
-  cancel-in-progress: true
-
 jobs:
-  create-github-release:
-    permissions: write-all
+  create-release-note:
+    permissions:
+      contents: write
     name: Create GitHub Release
     runs-on: ubuntu-latest
     steps:
