@@ -21,6 +21,6 @@ jobs:
           script: |
             const date = new Date();
             await github.request(`POST /repos/${{ github.repository }}/releases`, {
-              tag_name: `v${date.getFullYear()}.${date.getWeek()}-rc`,
+              tag_name: `v${date.toISOString().slice(0, 7).replace(/-/g, '.')}-rc`,
               generate_release_notes: true
             });
