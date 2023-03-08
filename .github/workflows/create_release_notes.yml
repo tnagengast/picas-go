@@ -17,8 +17,10 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const date = new Date();
+            const now = new Date();
+            const year = now.getFullYear();
+            const week = Math.ceil((now - new Date(now.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24 / 7);
             await github.request(`POST /repos/${{ github.repository }}/releases`, {
-              tag_name: `v${date.toISOString().slice(0, 7).replace(/-/g, '.')}-rc`,
+              tag_name: `v${year}.${week}`,
               generate_release_notes: true
             });
